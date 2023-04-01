@@ -1,0 +1,71 @@
+.loginForm {
+  border-radius: 20px;
+  background: white;
+  height: 100%;
+
+  .heading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: blueviolet;
+    font-weight: bold;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .formInputs {
+    margin-top: 20px;
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+
+      .formRow {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+
+        label {
+          font-weight: bold;
+          color: gray;
+          margin-bottom: 5px;
+        }
+
+        input, select {
+          font-weight: 400;
+          padding: 10px;
+          border-radius: 8px;
+          border: 0.5px solid gray;
+
+          &:focus {
+            outline: 0.5px solid blueviolet;
+          }
+        }
+      }
+
+      .button {
+        margin-top: 20px;
+        height: 50px;
+        width: 100px;
+        background: orangered;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+      }
+
+      a {
+        margin-top: 20px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
