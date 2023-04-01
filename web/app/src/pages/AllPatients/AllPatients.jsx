@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import Switch from '@mui/material/Switch';
@@ -7,11 +7,12 @@ import { red } from '@mui/material/colors';
 import { green } from '@mui/material/colors';
 import { Link, useNavigate } from 'react-router-dom';
 
-import './Home.scss';
-import { casesData, casesColumns } from '../../../constants';
+import './AllPatients.scss';
+import {ViewDatatable} from "../../components"
+import { casesData, casesColumns, patientsData, patientsColumns } from '../../../constants';
 
-const Home = () => {
-  const navigate = useNavigate();
+const AllPatients = () => {
+  const navigate = useNavigate()
 
   const GreenSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
@@ -50,7 +51,7 @@ const Home = () => {
     {
       field: 'action',
       headerName: 'View Details',
-      width: 130,
+      width: 160,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -75,68 +76,23 @@ const Home = () => {
   ];
 
   return (
-    <div className="home">
-      <div className="featuredCards">
-        <div className="card">
-          <div className="title">Cases Active</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
-          <div className="details">
-            <p>20</p>
-            <div>cases</div>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="title">All Cases</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
-          <div className="details">
-            <p>33</p>
-            <div>cases</div>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="title">Users Registered</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
-          <div className="details">
-            <p>67</p>
-            <div>cases</div>
-          </div>
-        </div>
-
-        <div className="card">
-          {/* <div className="title">All Cases</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
-          <div className="details">
-            <p>125</p>
-            <div>cases</div>
-          </div> */}
-        </div>
-
-        {/* <div className="newCard">
-          <div className="title">Cases Active</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
-          <div className="details">
-            <p>20</p>
-            <div>cases</div>
-          </div>
-        </div> */}
-      </div>
-      <div className="table">
-        <div className="title">Recent Cases</div>
+    <div className="allPatients">
+      <div className="container">
+        <div className="title">Patients</div>
 
         <DataGrid
           className="datagrid"
           getRowId={(row) => row.id}
-          rows={casesData}
-          columns={casesColumns.concat(actionKyc)}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
+          rows={patientsData}
+          columns={patientsColumns.concat(actionColumn)}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
           checkboxSelection
         />
+
       </div>
     </div>
   );
 };
 
-export default Home;
+export default AllPatients;

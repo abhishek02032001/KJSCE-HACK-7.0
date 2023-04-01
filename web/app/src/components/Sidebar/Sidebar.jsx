@@ -5,7 +5,7 @@ import { BiBrain, BiDroplet } from 'react-icons/bi';
 import { TbReportSearch } from 'react-icons/tb';
 import { IoAccessibilityOutline } from 'react-icons/io5';
 import { RiBodyScanLine } from 'react-icons/ri';
-
+import { HiOutlineUsers } from 'react-icons/hi';
 import './Sidebar.scss';
 import logo from '../../assets/name-icon.png';
 
@@ -13,16 +13,24 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="container">
-        <Link className="linkSection">
+        <div className="linkSection">
           <Link to="/">
             <img src={logo} alt="" />
           </Link>
-        </Link>
+        </div>
 
         <div className="linkSection">
           <Link to="/" className="link">
             <AiOutlineHome className="icon" />
             <p>Home</p>
+          </Link>
+          <Link to="/cases" className="link">
+            <TbReportSearch className="icon" />
+            <p>Cases</p>
+          </Link>
+          <Link to="/patients" className="link">
+            <HiOutlineUsers className="icon" />
+            <p>Patients</p>
           </Link>
           <Link to="/" className="link">
             <AiOutlineEdit className="icon" />
@@ -30,7 +38,7 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        <div className="linkSection">
+        {/* <div className="linkSection">
           <Link to="/forms/blood" className="link">
             <BiDroplet className="icon" />
             <p>Blood</p>
@@ -51,7 +59,7 @@ const Sidebar = () => {
             <TbReportSearch className="icon" />
             <p>Sonography</p>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -1,0 +1,20 @@
+.cases {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    width: 90%;
+
+    .title {
+      font-size: 2rem;
+      color: gray;
+      margin-bottom: 15px;
+    }
+
+    .datagrid {
+      height: 500px;
+      border-radius: 20px;
+    }
+  }
+}

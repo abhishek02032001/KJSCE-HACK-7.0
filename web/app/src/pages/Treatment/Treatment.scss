@@ -1,0 +1,56 @@
+@use 'variables';
+
+.treatment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    width: 90%;
+
+    .title {
+      color: gray;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .infoCard {
+        background: variables.$cardColor;
+        border-radius: 20px;
+        padding: 20px;
+        width: 45%;
+        height: 170px;
+
+        .heading {
+          font-size: 1.6rem;
+          font-weight: 700;
+          padding-bottom: 10px;
+          border-bottom: 1px solid lightgray;
+        }
+
+        .info {
+          padding: 10px 0;
+          height: 75%;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          flex-direction: column;
+
+          p {
+            font-weight: 400;
+            margin: 3px 0;
+            
+            span {
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+}
