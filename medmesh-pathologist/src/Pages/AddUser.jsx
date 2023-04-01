@@ -92,19 +92,19 @@ function AddUser() {
       <div className="col-8">
         <div className="container  card">
           <div className="cardtitle">
-          <h1 className=''>Add New User</h1>
+          <h1 className=''>Add New Report</h1>
           </div>
           
           <div className="row p-5  cardUser">
             <Form >
 
               <Form.Field>
-                <label>Aadhar Number</label>
-                <input type="text" placeholder='Aadhar Number' id="aadhar_no" value={data.aadhar_no} onChange={handle}   />
+                <label>Case ID</label>
+                <input type="text" placeholder='Case ID' id="aadhar_no" value={data.aadhar_no} onChange={handle}   />
               </Form.Field>
               <Form.Field>
-                <label>Name</label>
-                <input placeholder='Full name'  id="name" value={data.name} onChange={handle} />
+                <label>Report Name</label>
+                <input placeholder='Report Name'  id="name" value={data.name} onChange={handle} />
               </Form.Field>
               {/* <Form.Select
                 fluid
@@ -114,47 +114,24 @@ function AddUser() {
                 id="gender"
                 value={data.gender} onChange={handle}
               /> */}
-              <label>Gender</label>
-                <input type="text" placeholder='Type Gender' id="gender" value={data.gender} onChange={handle}/>
+              <label>Report Purpose</label>
+                <input type="text" placeholder='Report Purpose' id="gender" value={data.gender} onChange={handle}/>
            
               <Form.Field>
-                <label>Contact No.</label>
-                <input type="number" placeholder='Conatact Number' id="contact_no" value={data.contact_no} onChange={handle}/>
+                <label>Report Type</label>
+                <input type="number" placeholder='Report type' id="contact_no" value={data.contact_no} onChange={handle}/>
               </Form.Field>
               <Form.Field>
-                <label>Emergency Number</label>
-                <input type="number" placeholder='Emergency Number' id="emergency_no" value={data.emergency_no} onChange={handle} />
+                <label>Report Time</label>
+                <input type="number" placeholder='Report Time' id="emergency_no" value={data.emergency_no} onChange={handle} />
               </Form.Field>
-              <Form.Field>
-                <label>Address</label>
-                <input placeholder='Address' id="address" value={data.address} onChange={handle}/>
-              </Form.Field>
-              <Form.Field>
-                <label>Birthdate</label>
-                <input type="date" placeholder='Birthdate' id="birth_date" value={data.birth_date} onChange={handle}/>
-              </Form.Field>
+              
               <hr />
 
+              
               <Form.Field>
-                <label>Allergies</label>
-                <input placeholder='Allergies' id="allergies" value={data.allergies} onChange={handle}/>
-              </Form.Field>
-              <Form.Field>
-                <label>Regular Medications</label>
-                <input placeholder='Medications' id="reg_meds" value={data.reg_meds} onChange={handle} />
-              </Form.Field>
-              <Form.Field>
-                <label>Medical Conditions</label>
-                <input placeholder='Medical illness' id="medical_conditions" value={data.medical_conditions} onChange={handle}/>
-              </Form.Field>
-
-              <Form.Field>
-                <label>Remark,if any</label>
-                <input placeholder='Remarks' id="remarks" value={data.remarks} onChange={handle}/>
-              </Form.Field>
-              <Form.Field>
-                <label>Image</label>
-                <input type="file" placeholder='Image' id="image" onChange={handleImage}  />
+                <label>Report File</label>
+                <input type="file" placeholder='Report File' id="image" onChange={handleImage}  />
               </Form.Field>
               {/* <Form.Field>
                 <Checkbox label='I agree to the Terms and Conditions' />
@@ -167,7 +144,7 @@ function AddUser() {
                 to="/user"
                
               > 
-            <button type="submit" class="btn btn-success cbtn ms-2" onClick={handleSubmit} >Add New User</button>
+            <button type="submit" class="btn btn-success cbtn ms-1" onClick={handleSubmit} >Add Report</button>
               </Link>
 
 
