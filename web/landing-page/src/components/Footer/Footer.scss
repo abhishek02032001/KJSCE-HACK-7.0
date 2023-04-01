@@ -1,0 +1,14 @@
+.footer {
+  background: rgba(237, 237, 237, 0.5);
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 52px;
+
+  span {
+    font-weight: 700;
+    color: blueviolet;
+  }
+}

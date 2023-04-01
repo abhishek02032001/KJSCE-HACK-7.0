@@ -1,0 +1,70 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  background: #fff;
+  backdrop-filter: blur(20px);
+
+  .container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+
+      p {
+        margin-left: 10px;
+        color: #33CCCC;
+        font-weight: 800;
+        font-size: 1.2rem;
+
+        span {
+          color: black;
+          font-weight: 800;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .socialLinks {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 13%;
+      
+      .socialIcon {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        border-radius: 50%;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        border: 1px solid #33CCCC;
+        padding: 5px;
+        cursor: pointer;
+        color: #33CCCC;
+        font-size: 15px;
+
+        &:hover {
+          box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2),
+            0 3px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+      }
+    }
+  }
+}

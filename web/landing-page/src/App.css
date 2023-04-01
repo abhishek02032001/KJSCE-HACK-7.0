@@ -1,42 +1,27 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+a {
+  font-weight: 500;
+  color: blueviolet;
+  text-decoration: none;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+a:hover {
+  text-decoration: underline;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.app {
+  position: relative;
+  /* background-image: url('https://thumbs.dreamstime.com/z/f-177219365.jpg'); */
+  /* background-image: url('https://media.istockphoto.com/id/1365379675/vector/doctors-examining-human-lungs-respiratory-system-examination-and-treatment-pulmonology.jpg?s=612x612&w=0&k=20&c=q4fAKXPFs3EnDwrEXP7ZwoQKBieg5GL2AdJwTw_AGi8='); */
+  background: rgb(242, 242, 242);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  height: 100%;
 }
