@@ -35,3 +35,4 @@ async def main():
 
 
 app.include_router(doctor_router, tags=["Doctors"], prefix="/doctors")
+app.include_router(user_router, tags=["Users"], prefix="/users")
