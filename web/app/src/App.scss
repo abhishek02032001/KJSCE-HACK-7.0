@@ -1,3 +1,5 @@
+@use 'variables';
+
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +22,21 @@ a {
   }
 
   .right {
-    width: 92%;   
+    width: 92%;
+  }
+}
+
+.viewButton {
+  background: variables.$orange;
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  color: white;
+
+  &:hover {
+    box-shadow: variables.$shadow;
   }
 }

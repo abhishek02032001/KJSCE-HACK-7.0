@@ -22,6 +22,7 @@
       padding: 20px;
       background: #f6f2f2;
       text-align: center;
+      height: 130px;
 
       .title {
         font-weight: 700;
@@ -31,6 +32,11 @@
       .subtitle {
         margin-top: 5px;
         color: #797979;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       .details {
