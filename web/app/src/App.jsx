@@ -46,12 +46,12 @@ function App() {
 
             <Route path="add">
               <Route index element={<AddCase />} />
-              <Route path=":id" element={<AddTreatment />} />
+              {/* <Route path=":id" element={<AddTreatment />} /> */}
             </Route>
           </Route>
 
-          <Route path="forms">
-            <Route path="newcase" element={<Blood />} />
+          <Route path="/diagnosis">
+          <Route index element={<AddTreatment />} />
           </Route>
         </Routes>
       </div>

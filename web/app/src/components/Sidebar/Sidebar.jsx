@@ -6,6 +6,7 @@ import { TbReportSearch } from 'react-icons/tb';
 import { IoAccessibilityOutline } from 'react-icons/io5';
 import { RiBodyScanLine } from 'react-icons/ri';
 import { HiOutlineUsers } from 'react-icons/hi';
+import { RiMentalHealthLine } from 'react-icons/ri';
 import './Sidebar.scss';
 import logo from '../../assets/name-icon.png';
 
@@ -24,19 +25,19 @@ const Sidebar = () => {
             <AiOutlineHome className="icon" />
             <p>Home</p>
           </Link>
-
+{/* 
           <Link to="/cases/add" className="link">
             <AiOutlineEdit className="icon" />
             <p>Prescribe</p>
-          </Link>
+          </Link> */}
 
           <Link to="/cases/add" className="link">
             <AiOutlineFileAdd className="icon" />
             <p>Create Case</p>
           </Link>
 
-          <Link to="/cases/add" className="link">
-            <AiOutlineFileAdd className="icon" />
+          <Link to="/diagnosis" className="link">
+            <AiOutlineEdit className="icon" />
             <p>Add Diagnosis</p>
           </Link>
         </div>

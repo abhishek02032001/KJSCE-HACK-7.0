@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import './AddTreatment.scss';
+import { baseUrl } from '../../config';
 
 const AddTreatment = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const caseId = location.pathname.split('/')[3];
   const [treatment, setTreatment] = useState({
@@ -12,21 +15,29 @@ const AddTreatment = () => {
     description: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (location.pathname.split('/').length !== 4) {
-      setTreatment({ ...treatment, case_id: caseId });
+    try {
+      const res = await axios.post(`${baseUrl}/diagnosis`, {
+        case_id: treatment.case_id,
+        title: treatment.title,
+        description: treatment.description,
+      });
+
+      console.log(res);
+      navigate('/');
+    } catch (err) {
+      console.error(err);
     }
-    // setTreatment({...treatment, case_id: caseId})
     console.log(treatment);
     setTreatment({ case_id: '', title: '', description: '' });
   };
 
-  useEffect(() => {
-    if (location.pathname.split('/').length === 4) {
-      setTreatment({ ...treatment, case_id: caseId });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (location.pathname.split('/').length === 4) {
+  //     setTreatment({ ...treatment, case_id: caseId });
+  //   }
+  // }, []);
 
   return (
     <div className="addTreatment">

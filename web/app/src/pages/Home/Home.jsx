@@ -40,7 +40,7 @@ const Home = () => {
   const actionKyc = [
     {
       field: 'kyc_completed',
-      headerName: 'Case Active?',
+      headerName: 'Case Completed?',
       width: 180,
       type: 'string',
       renderCell: (params) => {
@@ -51,7 +51,7 @@ const Home = () => {
               onClick={() => handleKycStatus(params.row.id)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
-            <label>{params.row.close_date  ? 'Yes' : 'No'}</label>
+            <label>{params.row.close_date ? 'Yes' : 'No'}</label>
           </div>
         );
       },
@@ -107,7 +107,7 @@ const Home = () => {
           </div>
           <div className="details">
             <p>67</p>
-            <div>cases recorded on our MedMesh</div>
+            <div>cases recorded on MedMesh</div>
           </div>
         </div>
 
@@ -122,15 +122,17 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="card">
-          {/* <div className="title">All Cases</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
-          <div className="details">
-            <p>125</p>
-            <div>cases</div>
-          </div> */}
+        <div className="card special">
+          <Link to="/diagnosis">
+            <div className="title">Diagnosis</div>
+            <div className="details">
+              <p>+</p>
+            </div>
+            <div style={{color: "gray"}}>
+              Prescribe diagnosis for the Patient...
+            </div>
+          </Link>
         </div>
-
       </div>
       <div className="table">
         <div className="title">Recent Cases</div>

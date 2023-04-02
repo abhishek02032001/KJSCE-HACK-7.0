@@ -53,7 +53,7 @@ const Cases = () => {
   const actionKyc = [
     {
       field: 'kyc_completed',
-      headerName: 'Case Active?',
+      headerName: 'Case Completed?',
       width: 180,
       type: 'string',
       renderCell: (params) => {

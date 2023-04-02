@@ -78,3 +78,11 @@
     }
   }
 }
+
+.special {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: variables.$shadow;
+  }
+}
