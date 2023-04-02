@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineHome, AiOutlineEdit } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineEdit, AiOutlineFileAdd } from 'react-icons/ai';
 import { BiBrain, BiDroplet } from 'react-icons/bi';
 import { TbReportSearch } from 'react-icons/tb';
 import { IoAccessibilityOutline } from 'react-icons/io5';
@@ -28,6 +28,16 @@ const Sidebar = () => {
           <Link to="/cases/add" className="link">
             <AiOutlineEdit className="icon" />
             <p>Prescribe</p>
+          </Link>
+
+          <Link to="/cases/add" className="link">
+            <AiOutlineFileAdd className="icon" />
+            <p>Create Case</p>
+          </Link>
+
+          <Link to="/cases/add" className="link">
+            <AiOutlineFileAdd className="icon" />
+            <p>Add Diagnosis</p>
           </Link>
         </div>
 

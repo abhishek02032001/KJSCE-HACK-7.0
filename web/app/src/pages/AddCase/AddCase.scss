@@ -1,0 +1,47 @@
+@use 'variables';
+
+.addCase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    width: 50%;
+
+    .heading {
+      font-size: 2rem;
+      color: gray;
+      margin-bottom: 15px;
+    }
+
+    .form {
+      background: variables.$cardColor;
+      padding: 20px 50px;
+      border-radius: 20px;
+
+      .formRow {
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+
+        label {
+          font-size: 1.2rem;
+          color: gray;
+        }
+
+        input {
+          margin-top: 5px;
+          height: 35px;
+          padding: 10px;
+          border-radius: 8px;
+          border: none;
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        height: 40px;
+      }
+    }
+  }
+}

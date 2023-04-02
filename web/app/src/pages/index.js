@@ -4,6 +4,7 @@ export { default as AllPatients } from './AllPatients/AllPatients';
 export { default as Cases } from './Cases/Cases';
 export { default as Treatment } from './Treatment/Treatment';
 export { default as AddTreatment } from './AddTreatment/AddTreatment';
+export { default as AddCase } from './AddCase/AddCase';
 export { default as Reports } from './Reports/Reports';
 
 export { default as Blood } from './Forms/Blood/Blood';

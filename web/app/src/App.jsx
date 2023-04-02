@@ -15,6 +15,7 @@ import {
   Cases,
   AddTreatment,
   Reports,
+  AddCase,
 } from './pages';
 
 function App() {
@@ -41,20 +42,16 @@ function App() {
 
           <Route path="cases">
             <Route index element={<Cases />} />
-            <Route path=':reportId' element={<Reports />} />
+            <Route path=":reportId" element={<Reports />} />
 
             <Route path="add">
-              <Route index element={<AddTreatment />} />
+              <Route index element={<AddCase />} />
               <Route path=":id" element={<AddTreatment />} />
             </Route>
           </Route>
 
           <Route path="forms">
-            <Route path="blood" element={<Blood />} />
-            <Route path="ctscan" element={<CTscan />} />
-            <Route path="mri" element={<Mri />} />
-            <Route path="sonography" element={<Sonography />} />
-            <Route path="xray" element={<Xray />} />
+            <Route path="newcase" element={<Blood />} />
           </Route>
         </Routes>
       </div>

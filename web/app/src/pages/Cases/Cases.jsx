@@ -18,7 +18,7 @@ const Cases = () => {
   useEffect(() => {
     const fetchAllCases = async () => {
       const { data } = await axios.get(`${baseUrl}/cases/doc/1`);
-      console.log(data);
+      // console.log(data);
       setCases(data);
     };
 
@@ -37,6 +37,19 @@ const Cases = () => {
     },
   }));
 
+  const handleCaseStatus = async (caseId) => {
+    try {
+      const dispatch = {
+        case_id: caseId,
+      };
+      const res = await axios.post(`${baseUrl}/cases/close`, caseId);
+      navigate('/');
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const actionKyc = [
     {
       field: 'kyc_completed',
@@ -48,10 +61,10 @@ const Cases = () => {
           <div className="cellAction">
             <GreenSwitch
               checked={params.row.close_date ? true : false}
-              onClick={() => handleKycStatus(params.row.id)}
+              onClick={() => handleCaseStatus(params.row.id)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
-            <label>{params.row.kyc_completed === 1 ? 'Yes' : 'No'}</label>
+            <label>{params.row.close_date ? 'Yes' : 'No'}</label>
           </div>
         );
       },
@@ -61,7 +74,7 @@ const Cases = () => {
   const actionColumn = [
     {
       field: 'action',
-      headerName: 'Provide Treatment',
+      headerName: 'Action',
       width: 150,
       renderCell: (params) => {
         return (
@@ -75,10 +88,12 @@ const Cases = () => {
             </button> */}
             <button
               style={{ textDecoration: 'none' }}
-              onClick={() => navigate(`/cases/${params.row.id}`)}
+              onClick={() => {
+                navigate(`/cases/${params.row.id}`);
+              }}
               className="viewButton"
             >
-              Go
+              View Reports
             </button>
           </div>
         );
@@ -92,15 +107,15 @@ const Cases = () => {
         <div className="title">View all Cases</div>
 
         {/* {cases.length > 0 && ( */}
-          <DataGrid
-            className="datagrid"
-            getRowId={(row) => row.id}
-            rows={casesData}
-            columns={casesColumns.concat(actionKyc).concat(actionColumn)}
-            pageSize={10}
-            rowsPerPageOptions={[10]}
-            checkboxSelection
-          />
+        <DataGrid
+          className="datagrid"
+          getRowId={(row) => row.id}
+          rows={cases}
+          columns={casesColumns.concat(actionKyc).concat(actionColumn)}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+          checkboxSelection
+        />
         {/* )} */}
       </div>
     </div>

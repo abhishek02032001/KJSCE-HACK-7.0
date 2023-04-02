@@ -47,11 +47,11 @@ const Home = () => {
         return (
           <div className="cellAction">
             <GreenSwitch
-              checked={params.row.close_date === null ? true : false}
+              checked={params.row.close_date ? true : false}
               onClick={() => handleKycStatus(params.row.id)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
-            <label>{params.row.kyc_completed === 1 ? 'Yes' : 'No'}</label>
+            <label>{params.row.close_date  ? 'Yes' : 'No'}</label>
           </div>
         );
       },
@@ -61,7 +61,7 @@ const Home = () => {
   const actionColumn = [
     {
       field: 'action',
-      headerName: 'Provide Treatment',
+      headerName: 'Action',
       width: 150,
       renderCell: (params) => {
         return (
@@ -78,7 +78,7 @@ const Home = () => {
               onClick={() => navigate(`/cases/${params.row.id}`)}
               className="viewButton"
             >
-              Go
+              View Reports
             </button>
           </div>
         );
