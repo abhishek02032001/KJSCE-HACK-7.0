@@ -5,8 +5,13 @@ function AddUser() {
 
   return (
 
-   <div>
+   <div className="row">
+    <div className="col-2"></div>
+    <div className="col-8">
+
     <RC/>
+    </div>
+    <div className="col-2"></div>
    </div>
   )
 }
