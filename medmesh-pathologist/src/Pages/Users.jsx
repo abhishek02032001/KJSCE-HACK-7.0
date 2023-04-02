@@ -1,8 +1,25 @@
-import React from 'react'
+import axios from "axios"
+import { useState, useEffect } from "react";
 
 function Users() {
 
 
+  const [value, setValue] = useState([]);
+useEffect(() => {
+  fetchValue();
+}, []);
+
+
+const fetchValue   = () => {
+
+axios.get("http://10.0.130.142:8000/reports/3")
+.then((response) => {
+  console.log(response.data)
+  setValue(response.data)
+})
+
+
+}
   return (
     <div>
 
@@ -23,9 +40,9 @@ function Users() {
                 <th>Report File</th>
               </tr></thead>
             <tbody className=''>
-              {
-                ((value) => {
-                  return (
+             
+                
+                  
                     <tr>
                       <td>
                         <h4 class="ui image header">
@@ -45,14 +62,80 @@ function Users() {
                         CT Scan{value.emergency_no}
 
                       </td>
-                      <td>Creatine supplementation{value.medical_conditions} </td>
+                      <td>Creatine supplementation{value.pdf} </td>
+                      <td className="text-center"><button type="button" class="btn btn-success">View</button>{value.pdf} </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4 class="ui image header">
+                          
+                          <div class="content">
+                            12{value.name}
+                            
+                          </div>
+                        </h4></td>
+                      <td class="right aligned">
+                        Lena{value.aadhar_no}
+                      </td>
+                      <td>
+                        <div class="right aligned" data-rating="3" data-max-rating="3">Brain CT Scan {value.contact_no}</div>
+                      </td>
+                      <td class="right aligned">
+                        CT Scan{value.emergency_no}
+
+                      </td>
+                      <td>Creatine supplementation{value.pdf} </td>
+                      <td className="text-center"><button type="button" class="btn btn-success">View</button>{value.pdf} </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4 class="ui image header">
+                          
+                          <div class="content">
+                            12{value.name}
+                            
+                          </div>
+                        </h4></td>
+                      <td class="right aligned">
+                        Lena{value.aadhar_no}
+                      </td>
+                      <td>
+                        <div class="right aligned" data-rating="3" data-max-rating="3">Brain CT Scan {value.contact_no}</div>
+                      </td>
+                      <td class="right aligned">
+                        CT Scan{value.emergency_no}
+
+                      </td>
+                      <td>Creatine supplementation{value.pdf} </td>
+                      <td className="text-center"><button type="button" class="btn btn-success">View</button>{value.pdf} </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h4 class="ui image header">
+                          
+                          <div class="content">
+                            12{value.name}
+                            
+                          </div>
+                        </h4></td>
+                      <td class="right aligned">
+                        Lena{value.aadhar_no}
+                      </td>
+                      <td>
+                        <div class="right aligned" data-rating="3" data-max-rating="3">Brain CT Scan {value.contact_no}</div>
+                      </td>
+                      <td class="right aligned">
+                        CT Scan{value.emergency_no}
+
+                      </td>
+                      <td>Creatine supplementation{value.pdf} </td>
+                      <td className="text-center"><button type="button" class="btn btn-success">View</button>{value.pdf} </td>
                     </tr>
 
-                  )
 
-                })
+                
 
-              }
+              
 
 
             </tbody>
