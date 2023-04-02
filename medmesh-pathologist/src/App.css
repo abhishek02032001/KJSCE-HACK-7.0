@@ -80,3 +80,7 @@ margin-top: 2rem;
   background-color: #91BF76;
   width: 10rem;
 }
+.rtype:hover{
+  background-color: #F5F5F5;
+
+}

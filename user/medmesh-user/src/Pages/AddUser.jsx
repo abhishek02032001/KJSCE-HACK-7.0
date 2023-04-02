@@ -46,7 +46,7 @@ function AddUser() {
     const newdata = { ...data };
     newdata[e.target.id] = e.target.value;
     setData(newdata);
-    console.log(newdata);
+    // console.log(newdata);
   }
   function handleImage(e){
     console.log(e.target.files);
