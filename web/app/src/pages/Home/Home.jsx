@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import Switch from '@mui/material/Switch';
@@ -9,9 +9,21 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import './Home.scss';
 import { casesData, casesColumns } from '../../../constants';
+import { baseUrl } from '../../config';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [cases, setCases] = useState();
+
+  useEffect(() => {
+    const fetchAllCases = async () => {
+      const { data } = await axios.get(`${baseUrl}/cases/doc/1`);
+      console.log(data);
+      setCases(data);
+    };
+
+    fetchAllCases();
+  }, []);
 
   const GreenSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
@@ -35,7 +47,7 @@ const Home = () => {
         return (
           <div className="cellAction">
             <GreenSwitch
-              checked={params.row.kyc_completed === 1 ? true : false}
+              checked={params.row.close_date === null ? true : false}
               onClick={() => handleKycStatus(params.row.id)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
@@ -49,8 +61,8 @@ const Home = () => {
   const actionColumn = [
     {
       field: 'action',
-      headerName: 'View Details',
-      width: 130,
+      headerName: 'Provide Treatment',
+      width: 150,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -63,10 +75,10 @@ const Home = () => {
             </button> */}
             <button
               style={{ textDecoration: 'none' }}
-              onClick={() => navigate(`/patients/${params.row.id}`)}
+              onClick={() => navigate(`/cases/${params.row.id}`)}
               className="viewButton"
             >
-              View
+              Go
             </button>
           </div>
         );
@@ -79,28 +91,34 @@ const Home = () => {
       <div className="featuredCards">
         <div className="card">
           <div className="title">Cases Active</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
+          <div className="subtitle">
+            <Link to="/cases">View all cases...</Link>
+          </div>
           <div className="details">
             <p>20</p>
-            <div>cases</div>
+            <div>cases currently need action</div>
           </div>
         </div>
 
         <div className="card">
           <div className="title">All Cases</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
+          <div className="subtitle">
+            <Link to="/cases">View all cases...</Link>
+          </div>
           <div className="details">
-            <p>33</p>
-            <div>cases</div>
+            <p>67</p>
+            <div>cases recorded on our MedMesh</div>
           </div>
         </div>
 
         <div className="card">
           <div className="title">Users Registered</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
+          <div className="subtitle">
+            <Link to="/patients">View all patients...</Link>
+          </div>
           <div className="details">
-            <p>67</p>
-            <div>cases</div>
+            <p>33</p>
+            <div>patients registered on our Platform</div>
           </div>
         </div>
 
@@ -113,27 +131,31 @@ const Home = () => {
           </div> */}
         </div>
 
-        {/* <div className="newCard">
-          <div className="title">Cases Active</div>
-          <div className="subtitle">Lorem ipsum dolor sit amet.</div>
-          <div className="details">
-            <p>20</p>
-            <div>cases</div>
-          </div>
-        </div> */}
       </div>
       <div className="table">
         <div className="title">Recent Cases</div>
 
-        <DataGrid
-          className="datagrid"
-          getRowId={(row) => row.id}
-          rows={casesData}
-          columns={casesColumns.concat(actionKyc)}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-        />
+        {cases ? (
+          <DataGrid
+            className="datagrid"
+            getRowId={(row) => row.id}
+            rows={cases}
+            columns={casesColumns.concat(actionKyc).concat(actionColumn)}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+          />
+        ) : (
+          <DataGrid
+            className="datagrid"
+            getRowId={(row) => row.id}
+            rows={casesData}
+            columns={casesColumns.concat(actionKyc).concat(actionColumn)}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+          />
+        )}
       </div>
     </div>
   );

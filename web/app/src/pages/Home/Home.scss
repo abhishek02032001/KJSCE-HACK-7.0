@@ -32,6 +32,11 @@
       .subtitle {
         margin-top: 5px;
         color: #797979;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       .details {

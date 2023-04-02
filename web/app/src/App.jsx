@@ -13,6 +13,8 @@ import {
   Patient,
   Treatment,
   Cases,
+  AddTreatment,
+  Reports,
 } from './pages';
 
 function App() {
@@ -39,6 +41,12 @@ function App() {
 
           <Route path="cases">
             <Route index element={<Cases />} />
+            <Route path=':reportId' element={<Reports />} />
+
+            <Route path="add">
+              <Route index element={<AddTreatment />} />
+              <Route path=":id" element={<AddTreatment />} />
+            </Route>
           </Route>
 
           <Route path="forms">

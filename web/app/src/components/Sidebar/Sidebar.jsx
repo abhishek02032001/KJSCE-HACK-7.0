@@ -24,6 +24,14 @@ const Sidebar = () => {
             <AiOutlineHome className="icon" />
             <p>Home</p>
           </Link>
+
+          <Link to="/cases/add" className="link">
+            <AiOutlineEdit className="icon" />
+            <p>Prescribe</p>
+          </Link>
+        </div>
+
+        <div className="linkSection">
           <Link to="/cases" className="link">
             <TbReportSearch className="icon" />
             <p>Cases</p>
@@ -32,34 +40,7 @@ const Sidebar = () => {
             <HiOutlineUsers className="icon" />
             <p>Patients</p>
           </Link>
-          <Link to="/" className="link">
-            <AiOutlineEdit className="icon" />
-            <p>Edit</p>
-          </Link>
         </div>
-
-        {/* <div className="linkSection">
-          <Link to="/forms/blood" className="link">
-            <BiDroplet className="icon" />
-            <p>Blood</p>
-          </Link>
-          <Link to="/forms/ctscan" className="link">
-            <RiBodyScanLine className="icon" />
-            <p>CT Scan</p>
-          </Link>
-          <Link to="/forms/mri" className="link">
-            <BiBrain className="icon" />
-            <p>MRI</p>
-          </Link>
-          <Link to="/forms/xray" className="link">
-            <IoAccessibilityOutline className="icon" />
-            <p>X-Ray</p>
-          </Link>
-          <Link to="/forms/sonography" className="link">
-            <TbReportSearch className="icon" />
-            <p>Sonography</p>
-          </Link>
-        </div> */}
       </div>
     </div>
   );

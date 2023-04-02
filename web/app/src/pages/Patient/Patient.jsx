@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
@@ -8,14 +8,38 @@ import { red } from '@mui/material/colors';
 import { green } from '@mui/material/colors';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { treatmentData, treatmentColumns } from '../../../constants';
-
 import './Patient.scss';
+import { treatmentData, casesColumns } from '../../../constants';
+import { baseUrl } from '../../config';
 
 const Patient = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
   const patientId = location.pathname.split('/')[2];
+
+  const [patientData, setPatientData] = useState([]);
+  const [patientCases, setPatientCases] = useState([]);
+
+  useEffect(() => {
+    const fetchPatientDetails = async () => {
+      const { data } = await axios.get(`${baseUrl}/users/${patientId}`);
+      console.log(data);
+      setPatientData(data);
+    };
+
+    fetchPatientDetails();
+  }, []);
+
+  useEffect(() => {
+    const fetchPatientCases = async () => {
+      const { data } = await axios.get(`${baseUrl}/cases/user/${patientId}`);
+      // console.log(`${baseUrl}/cases/user/${patientId}`)
+      console.log(data);
+      setPatientCases(data);
+    };
+
+    fetchPatientCases();
+  }, []);
 
   const GreenSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
@@ -39,7 +63,7 @@ const Patient = () => {
         return (
           <div className="cellAction">
             <GreenSwitch
-              checked={params.row.kyc_completed === 1 ? true : false}
+              checked={params.row.close_date === null ? true : false}
               onClick={() => handleKycStatus(params.row.id)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
@@ -68,7 +92,7 @@ const Patient = () => {
             <button
               style={{ textDecoration: 'none' }}
               onClick={() =>
-                navigate(`/patients/${patientId}/treatments/${params.row.id}`)
+                navigate(`/cases/${params.row.id}`)
               }
               className="viewButton"
             >
@@ -83,16 +107,21 @@ const Patient = () => {
   return (
     <div className="patient">
       <div className="container">
-        <div className="title">View Patient Details</div>
-        <DataGrid
-          className="datagrid"
-          getRowId={(row) => row.id}
-          rows={treatmentData}
-          columns={treatmentColumns.concat(actionColumn)}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-        />
+        <div className="title">
+          {patientData.name}'s Past Cases
+        </div>
+
+        {patientCases && (
+          <DataGrid
+            className="datagrid"
+            getRowId={(row) => row.id}
+            rows={patientCases}
+            columns={casesColumns.concat(actionKyc).concat(actionColumn)}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+            checkboxSelection
+          />
+        )}
       </div>
     </div>
   );

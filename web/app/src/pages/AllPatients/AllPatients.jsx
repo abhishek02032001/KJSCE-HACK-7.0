@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import Switch from '@mui/material/Switch';
@@ -8,11 +8,28 @@ import { green } from '@mui/material/colors';
 import { Link, useNavigate } from 'react-router-dom';
 
 import './AllPatients.scss';
-import {ViewDatatable} from "../../components"
-import { casesData, casesColumns, patientsData, patientsColumns } from '../../../constants';
+import { ViewDatatable } from '../../components';
+import {
+  casesData,
+  casesColumns,
+  patientsData,
+  patientsColumns,
+} from '../../../constants';
+import { baseUrl } from '../../config';
 
 const AllPatients = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [patients, setPatients] = useState();
+
+  useEffect(() => {
+    const fetchAllPatients = async () => {
+      const { data } = await axios.get(`${baseUrl}/users`);
+      // console.log(data);
+      setPatients(data);
+    };
+
+    fetchAllPatients();
+  }, []);
 
   const GreenSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
@@ -64,7 +81,7 @@ const AllPatients = () => {
             </button> */}
             <button
               style={{ textDecoration: 'none' }}
-              onClick={() => navigate(`/patients/${params.row.id}`)}
+              onClick={() => navigate(`/patients/${params.row.aadhar_no}`)}
               className="viewButton"
             >
               View
@@ -80,16 +97,27 @@ const AllPatients = () => {
       <div className="container">
         <div className="title">Patients</div>
 
-        <DataGrid
-          className="datagrid"
-          getRowId={(row) => row.id}
-          rows={patientsData}
-          columns={patientsColumns.concat(actionColumn)}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-          checkboxSelection
-        />
-
+        {patients ? (
+          <DataGrid
+            className="datagrid"
+            getRowId={(row) => row.aadhar_no}
+            rows={patients}
+            columns={patientsColumns.concat(actionColumn)}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+            checkboxSelection
+          />
+        ) : (
+          <DataGrid
+            className="datagrid"
+            getRowId={(row) => row.aadhar_id}
+            rows={patientsData}
+            columns={patientsColumns.concat(actionColumn)}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+            checkboxSelection
+          />
+        )}
       </div>
     </div>
   );

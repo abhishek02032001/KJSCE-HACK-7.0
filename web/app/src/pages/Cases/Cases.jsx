@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import Switch from '@mui/material/Switch';
@@ -8,9 +8,23 @@ import { green } from '@mui/material/colors';
 import { Link, useNavigate } from 'react-router-dom';
 
 import './Cases.scss';
-import {casesData, casesColumns} from "../../../constants"
+import { casesData, casesColumns } from '../../../constants';
+import { baseUrl } from '../../config';
 
 const Cases = () => {
+  const navigate = useNavigate();
+  const [cases, setCases] = useState([]);
+
+  useEffect(() => {
+    const fetchAllCases = async () => {
+      const { data } = await axios.get(`${baseUrl}/cases/doc/1`);
+      console.log(data);
+      setCases(data);
+    };
+
+    fetchAllCases();
+  }, []);
+
   const GreenSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
       color: green[600],
@@ -33,7 +47,7 @@ const Cases = () => {
         return (
           <div className="cellAction">
             <GreenSwitch
-              checked={params.row.kyc_completed === 1 ? true : false}
+              checked={params.row.close_date ? true : false}
               onClick={() => handleKycStatus(params.row.id)}
               inputProps={{ 'aria-label': 'controlled' }}
             />
@@ -43,20 +57,51 @@ const Cases = () => {
       },
     },
   ];
-  return (
-    <div className='cases'>
-      <div className="container">
-        <div className="title">Cases</div>
 
-        <DataGrid
-          className="datagrid"
-          getRowId={(row) => row.id}
-          rows={casesData}
-          columns={casesColumns.concat(actionKyc)}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-          checkboxSelection
-        />
+  const actionColumn = [
+    {
+      field: 'action',
+      headerName: 'Provide Treatment',
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            {/* <button
+              style={{ textDecoration: 'none' }}
+              onClick={() => setViewDialogBox(params.row.order_id)}
+              className="viewButton"
+            >
+              View
+            </button> */}
+            <button
+              style={{ textDecoration: 'none' }}
+              onClick={() => navigate(`/cases/${params.row.id}`)}
+              className="viewButton"
+            >
+              Go
+            </button>
+          </div>
+        );
+      },
+    },
+  ];
+
+  return (
+    <div className="cases">
+      <div className="container">
+        <div className="title">View all Cases</div>
+
+        {/* {cases.length > 0 && ( */}
+          <DataGrid
+            className="datagrid"
+            getRowId={(row) => row.id}
+            rows={casesData}
+            columns={casesColumns.concat(actionKyc).concat(actionColumn)}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+            checkboxSelection
+          />
+        {/* )} */}
       </div>
     </div>
   );
